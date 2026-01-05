@@ -18,7 +18,7 @@ Selain itu, Telegram Bot juga berfungsi sebagai sistem notifikasi dengan memberi
 - Wireshark
 
 ## Arsitektur Sistem
-![Architecture](docs/images/architecture.png)
+![Architecture](images/architecture.png)
 
 ## Analisis Data
 - Forecasting data sensor
@@ -27,7 +27,7 @@ Selain itu, Telegram Bot juga berfungsi sebagai sistem notifikasi dengan memberi
 ## Analisis Jaringan
 Analisis trafik MQTT dilakukan menggunakan Wireshark untuk memahami pola komunikasi data.
 
-![Wireshark](docs/images/wireshark.png)
+![Wireshark](images/wireshark.png)
 
 ## Cara Menjalankan
 1. Upload kode ke ESP menggunakan PlatformIO
