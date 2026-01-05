@@ -1,0 +1,944 @@
+[
+    {
+        "id": "2ec9db83d3699390",
+        "type": "tab",
+        "label": "UAS",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b48c18272cc87a40",
+        "type": "mqtt in",
+        "z": "2ec9db83d3699390",
+        "name": "Menerima LDR",
+        "topic": "home/brightness",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "28a4a4913c684da2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "698b67218067dc60",
+                "8b8607268cbeda4f"
+            ]
+        ]
+    },
+    {
+        "id": "683c609b305b8807",
+        "type": "mqtt in",
+        "z": "2ec9db83d3699390",
+        "name": "Menerima PIR",
+        "topic": "home/pir",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "28a4a4913c684da2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 440,
+        "wires": [
+            [
+                "707907a484546aef",
+                "8b8607268cbeda4f"
+            ]
+        ]
+    },
+    {
+        "id": "c5be513d991405c6",
+        "type": "mqtt in",
+        "z": "2ec9db83d3699390",
+        "name": "Menerima suhu",
+        "topic": "home/temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "28a4a4913c684da2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "f32a2898d8753b66"
+            ]
+        ]
+    },
+    {
+        "id": "698b67218067dc60",
+        "type": "function",
+        "z": "2ec9db83d3699390",
+        "name": "function 1",
+        "func": "msg.payload = parseInt(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 120,
+        "wires": [
+            [
+                "4c05d101facf9633",
+                "135ac2fdeca48b53"
+            ]
+        ]
+    },
+    {
+        "id": "4c05d101facf9633",
+        "type": "ui-chart",
+        "z": "2ec9db83d3699390",
+        "group": "b33616cf6a4cc657",
+        "name": "menampilkan hasil LDR",
+        "label": "chart",
+        "order": 1,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "30",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 12,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 870,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f32a2898d8753b66",
+        "type": "function",
+        "z": "2ec9db83d3699390",
+        "name": "function 2",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 240,
+        "wires": [
+            [
+                "427d2cef42d5d49c"
+            ]
+        ]
+    },
+    {
+        "id": "889b7dd7c67bc392",
+        "type": "ui-text",
+        "z": "2ec9db83d3699390",
+        "group": "4f28903557cb7f97",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Menampilkan hasil PIR",
+        "label": "Hasil PIR: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": true,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 680,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "7f53f22aec52dd1e",
+        "type": "mqtt in",
+        "z": "2ec9db83d3699390",
+        "name": "Menerima Data Lampu",
+        "topic": "home/lamp/state",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "28a4a4913c684da2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 540,
+        "wires": [
+            [
+                "2f811aa5e393eea8"
+            ]
+        ]
+    },
+    {
+        "id": "3ae7d464c71c2d89",
+        "type": "ui-text",
+        "z": "2ec9db83d3699390",
+        "group": "4f28903557cb7f97",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Menerima Data Lampu",
+        "label": "Status Lampu",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": true,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 640,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "707907a484546aef",
+        "type": "function",
+        "z": "2ec9db83d3699390",
+        "name": "function 3",
+        "func": "let pir = parseInt(msg.payload);\n\nif (pir == 1) {\n    msg.payload = \"Ada pergerakan\";\n} else {\n    msg.payload = \"Tidak Ada Pergerakan\";\n}\n\nreturn msg\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 440,
+        "wires": [
+            [
+                "889b7dd7c67bc392"
+            ]
+        ]
+    },
+    {
+        "id": "2f811aa5e393eea8",
+        "type": "function",
+        "z": "2ec9db83d3699390",
+        "name": "function 4",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 540,
+        "wires": [
+            [
+                "3ae7d464c71c2d89"
+            ]
+        ]
+    },
+    {
+        "id": "50228649693ff9ef",
+        "type": "telegram receiver",
+        "z": "2ec9db83d3699390",
+        "name": "PerintahLampu",
+        "bot": "23f8b123e0fe5fd1",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 160,
+        "y": 780,
+        "wires": [
+            [
+                "c7fb7cf45a9205e2"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "c7fb7cf45a9205e2",
+        "type": "function",
+        "z": "2ec9db83d3699390",
+        "name": "Perintah telegram",
+        "func": "// Ambil isi pesan awal dari Telegram\nlet cmd = msg.payload.content.toString().trim().toUpperCase();\n\n// Buat pesan mqtt\nlet mqttMsg = {};\nmqttMsg.mode = \"Telegram\";\n\nif (cmd === \"ON\" || cmd === \"OFF\") {\n    mqttMsg.payload = cmd;\n    return mqttMsg;   // kirim ke MQTT OUT\n}\n\n// Jika bukan ON atau OFF → abaikan\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 780,
+        "wires": [
+            [
+                "94e46ebbbb26985f"
+            ]
+        ]
+    },
+    {
+        "id": "94e46ebbbb26985f",
+        "type": "mqtt out",
+        "z": "2ec9db83d3699390",
+        "name": "perintah Lampu Telegram",
+        "topic": "home/lamp/cmd",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "28a4a4913c684da2",
+        "x": 750,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "d33f9e1310542b52",
+        "type": "mqtt in",
+        "z": "2ec9db83d3699390",
+        "name": "",
+        "topic": "home/humidity",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "28a4a4913c684da2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 340,
+        "wires": [
+            [
+                "edf7ffdb2b4a6ba1"
+            ]
+        ]
+    },
+    {
+        "id": "edf7ffdb2b4a6ba1",
+        "type": "ui-gauge",
+        "z": "2ec9db83d3699390",
+        "name": "Menampilkan Humidity",
+        "group": "19ae17cc8d56fe27",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 6,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Humidity",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "Percent (%)",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": 10,
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 380,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "427d2cef42d5d49c",
+        "type": "ui-gauge",
+        "z": "2ec9db83d3699390",
+        "name": "Menampilkan suhu",
+        "group": "19ae17cc8d56fe27",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 6,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Temperature",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "*C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": 10,
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 510,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "586c74afdfe19ba2",
+        "type": "ui-switch",
+        "z": "2ec9db83d3699390",
+        "name": "",
+        "label": "AC SWITCH",
+        "group": "4f28903557cb7f97",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": false,
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 170,
+        "y": 660,
+        "wires": [
+            [
+                "4047d073e09b03f8"
+            ]
+        ]
+    },
+    {
+        "id": "4047d073e09b03f8",
+        "type": "change",
+        "z": "2ec9db83d3699390",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "ON",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "OFF",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 660,
+        "wires": [
+            [
+                "e85d266c114472b8"
+            ]
+        ]
+    },
+    {
+        "id": "e85d266c114472b8",
+        "type": "mqtt out",
+        "z": "2ec9db83d3699390",
+        "name": "perintah ac",
+        "topic": "home/ac/cmd",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "28a4a4913c684da2",
+        "x": 610,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "9b40d4a0c7aad55d",
+        "type": "firebase-out",
+        "z": "2ec9db83d3699390",
+        "name": "Add data sensor",
+        "database": "e8796a1869e179bc",
+        "path": "/sensor/temperature",
+        "pathType": "str",
+        "priority": "1",
+        "queryType": "push",
+        "x": 720,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "e20d2695ee733e83",
+        "type": "mqtt in",
+        "z": "2ec9db83d3699390",
+        "name": "Data Python",
+        "topic": "statistik/harian",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "28a4a4913c684da2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 900,
+        "wires": [
+            [
+                "3c845820ac9a052d",
+                "5d3bfe79d4f853b0"
+            ]
+        ]
+    },
+    {
+        "id": "3c845820ac9a052d",
+        "type": "function",
+        "z": "2ec9db83d3699390",
+        "name": "function 7",
+        "func": "let data = msg.payload.ringkasan_harian;\n\nmsg.payload = [\n    {\n        kategori: \"Jam Paling Sibuk\",\n        nilai: data.jam_paling_sibuk\n    },\n    {\n        kategori: \"Jam Paling Sepi\",\n        nilai: data.jam_paling_sepi\n    },\n    {\n        kategori: \"Jam Istirahat\",\n        nilai: Array.isArray(data.jam_istirahat)\n            ? data.jam_istirahat.join(\", \")\n            : data.jam_istirahat\n    }\n];\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 920,
+        "wires": [
+            [
+                "bc06d217ec9747d5",
+                "a85e051f845bc8dc"
+            ]
+        ]
+    },
+    {
+        "id": "bc06d217ec9747d5",
+        "type": "ui-table",
+        "z": "2ec9db83d3699390",
+        "group": "69ece8c19c28e3f1",
+        "name": "Menampilkan Top ",
+        "label": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "maxrows": "4",
+        "passthru": false,
+        "autocols": true,
+        "showSearch": true,
+        "deselect": true,
+        "selectionType": "none",
+        "columns": [],
+        "mobileBreakpoint": "sm",
+        "mobileBreakpointType": "defaults",
+        "action": "replace",
+        "className": "",
+        "x": 740,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5d3bfe79d4f853b0",
+        "type": "debug",
+        "z": "2ec9db83d3699390",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "a85e051f845bc8dc",
+        "type": "debug",
+        "z": "2ec9db83d3699390",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "8b8607268cbeda4f",
+        "type": "function",
+        "z": "2ec9db83d3699390",
+        "name": "function 6",
+        "func": "// Ambil data lama dari flow\nlet data = flow.get(\"sensor_data\") || {};\n\n// Isi sesuai topic\nif (msg.topic === \"home/brightness\") {\n    data.ldr = msg.payload;\n}\nelse if (msg.topic === \"home/pir\") {\n    data.pir = msg.payload;\n}\n// Simpan kembali\nflow.set(\"sensor_data\", data);\n\n// Keluarkan hanya jika PIR (trigger)\nif (msg.topic !== \"home/pir\") {\n    return null;\n}\n\ndata.waktu = new Date().toLocaleString(\"id-ID\", {\n    timeZone: \"Asia/Jakarta\"\n});\n\n// Output lengkap\nmsg.payload = data;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 40,
+        "wires": [
+            [
+                "9b40d4a0c7aad55d"
+            ]
+        ]
+    },
+    {
+        "id": "135ac2fdeca48b53",
+        "type": "function",
+        "z": "2ec9db83d3699390",
+        "name": "function 14",
+        "func": "\nlet ldr = parseInt(msg.payload);\n\nif (ldr < 500) {\n\n    msg.payload = {\n        chatId: ,       // ganti dengan chat ID kamu\n        type: \"message\",\n        content: `⚠️ PERINGATAN!\\nCahaya terlalu rendah.\\nLDR: ${ldr}`\n    };\n\n    return msg;\n\n\n} else {\n    return null;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 200,
+        "wires": [
+            [
+                "4c2992a1e92b205f"
+            ]
+        ]
+    },
+    {
+        "id": "4c2992a1e92b205f",
+        "type": "telegram sender",
+        "z": "2ec9db83d3699390",
+        "name": "Intensitas cahaya",
+        "bot": "23f8b123e0fe5fd1",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 990,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "28a4a4913c684da2",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "10.252.242.83",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b33616cf6a4cc657",
+        "type": "ui-group",
+        "name": "Tampilan cahaya",
+        "page": "b872f40200438492",
+        "width": 12,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "4f28903557cb7f97",
+        "type": "ui-group",
+        "name": "Hasil Sensor PIR",
+        "page": "b872f40200438492",
+        "width": 6,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "23f8b123e0fe5fd1",
+        "type": "telegram bot",
+        "botname": "LampuBOT",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "19ae17cc8d56fe27",
+        "type": "ui-group",
+        "name": "Menampilkan Suhu & Humidity",
+        "page": "b872f40200438492",
+        "width": 12,
+        "height": 1,
+        "order": 4,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "e8796a1869e179bc",
+        "type": "firebase-config",
+        "name": "My Database",
+        "authType": "anonymous",
+        "claims": {},
+        "createUser": false,
+        "status": {
+            "firestore": false,
+            "storage": false
+        },
+        "useClaims": false
+    },
+    {
+        "id": "69ece8c19c28e3f1",
+        "type": "ui-group",
+        "name": "Menampilkan Data Olahan",
+        "page": "b872f40200438492",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "b872f40200438492",
+        "type": "ui-page",
+        "name": "UAS",
+        "ui": "547e643789c48cb0",
+        "path": "/UAS",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "a1429d0d6e52fdf1",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 4,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "547e643789c48cb0",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "a1429d0d6e52fdf1",
+        "type": "ui-theme",
+        "name": "UAS IOT",
+        "colors": {
+            "surface": "#51d2ec",
+            "primary": "#0094ce",
+            "bgPage": "#f2d364",
+            "groupBg": "#f7f8f8",
+            "groupOutline": "#b5b0b0"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "da46a9e57eb69d7b",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.29.0",
+            "node-red-contrib-telegrambot": "16.4.0",
+            "@gogovega/node-red-contrib-firebase-realtime-database": "0.8.2",
+            "@gogovega/firebase-config-node": "0.3.2"
+        }
+    }
+]

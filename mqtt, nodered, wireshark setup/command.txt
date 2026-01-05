@@ -1,0 +1,26 @@
+Instalasi Node-Red
+1. Instal Node JS melalui link https://nodejs.org/en/download
+2. Install Node-Red npm install -g --unsafe-perm node-red
+3. Menjalankan Node-red di folder manapun dengan command: node-red
+4. Pada Node-red dapat melakukan import dari flow.json yang diberikan.
+
+
+Instalasi dan Setup MQTT
+1. Install MQTT Broker pada link https://mosquitto.org/download/
+2. Jalankan Installer
+3. pada Command Prompt masuk pada folder mqtt, dan menjalankan command: mosquitto -v
+4. Menjalankan command: "mosquitto_passwd -c passwd.txt <user-name>" untuk sistem keamanan mosquitto. Setelah menjalankan akan muncul form password yang ingin digunakan
+5. Pada C:\Program Files\mosquitto\mosquitto.conf Tambahkan baris berikut: 
+    allow_anonymous false 
+    password_file C:/Program Files/mosquitto/passwd.txt 
+
+    untuk mengaktifkan passwd.txt sebagai sistem autentikasi keamanan mqtt
+6. Restart MQTT dengan:
+    net stop mosquitto 
+    mosquitto -c "C:\Program Files\mosquitto\mosquitto.conf" -v 
+7. Jangan lupa untuk mengaktifkan Inbound rule firewall mqtt pada port 1883
+
+Instalasi wireshark 
+1. Install wireshark https://www.wireshark.org/download.html. 
+2. menjalankan wireshark dengan interface monitoring menggunakan Wi-fi. 
+
